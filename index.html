@@ -7,7 +7,7 @@
 
         <style>
             header {
-                background-color: #00e1ff;
+                background-color: #00aeff;
                 color: #FFFFFF;
                 text-align: center;
                 max-width: 800px;
@@ -15,37 +15,41 @@
                 padding: 16px;
                 border: 5px solid #00aeff;
             }
-            main{
+            main img{
                 width: 80px;
                 height: 80px;
             }
-        </style>
 
+            main{                   
+                color: #00aeff;
+                background-color:#FFFFFF;
+            }
+        </style>
     </head>
+
     <body>
        <header>
             <h1>Meu blog tech</h1>    
             <p>Vou compartilhar conhecimentos sobre tecnologia e programação</p>
         </header>
 
-             <h2>Meu primeiro post</h2>
-              <button>❤️<span>0</span></button>
-              <button>💲​<span>0</span></button>
-            <P>Boas-vindas ao meu novo blog! Aqui vou falar um pouco sobre meu gostos musicais</P>
-            <p>Por: Miguel Henrique Meurer</p>
         <main>
+            <article>
+                <h2>Meu primeiro post</h2>
+                <P>Boas-vindas ao meu novo blog! Aqui vou falar um pouco sobre meu gostos musicais</P>
+                <p>Por: Miguel Henrique Meurer</p>
+
+                <button>❤️<span>0</span></button>
+                <button>💲​<span>0</span></button>
+            </article>
+
             <article>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/DJ_Arana.png" alt="Dj Arana">
                 <div>
 
-                    <h2>quais são os meus gostos musicais?
-                        eu gosto de musica eletronica,funk e pagode; 
-                        e eu amo esse estilo de musica acho que combina muito com meu etilo de vida e jeito de ser.
-                    </h2>
-                     text-align: center;
-                    <h2>E qual o seu gosto musical? oque você gosta de ouvir? </h2>
-                    <p class="artigo-autor">Por:Miguel Henrique Meurer</p>
-                    <p>Texto sobre meus gostos musicais aqui.</p>
+                    <h2>quais são os meus gostos musicais?</h2>
+                    <p>eu gosto de musica eletronica,funk e pagode. Amo esse estilo de música, acho que combina muito com meu etilo de vida e jeito de ser. E qual o seu gosto musical? oque você gosta de ouvir?</p>
+
                     <button>❤️<span>0</span></button>
                     <button>💲​<span>0</span></button>
                 </div>
@@ -55,6 +59,9 @@
     <script>
         const botao = document.querySelector("button");
 
-        
+        function botaoClicado() {
+            let texto = botao.querySelector("span");
+            texto.textContent++;
+        }
     </script>
 </html>
