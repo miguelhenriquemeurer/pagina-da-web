@@ -1,0 +1,795 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Funk Brasil | DJ Arana</title>
+
+  <meta name="description"
+        content="Uma página dedicada ao funk brasileiro e ao universo do DJ Arana.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* BARRA DE NAVEGAÇÃO */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 0, 80, 0.3);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      height: 70px;
+      padding: 0 25px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #ff174f;
+      text-shadow: 0 0 15px #ff174f;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: #ff174f;
+      text-shadow: 0 0 10px #ff174f;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 140px 25px 80px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      background:
+        radial-gradient(circle at center, rgba(255, 0, 80, .22), transparent 40%),
+        linear-gradient(135deg, #050505, #17000a, #050505);
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 18px;
+      margin-bottom: 20px;
+
+      border: 1px solid #ff174f;
+      border-radius: 50px;
+
+      color: #ff174f;
+      font-weight: bold;
+      letter-spacing: 2px;
+
+      box-shadow: 0 0 20px rgba(255, 23, 79, .3);
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 10vw, 120px);
+      line-height: .9;
+      text-transform: uppercase;
+
+      text-shadow:
+        0 0 10px #ff174f,
+        0 0 40px rgba(255, 23, 79, .5);
+    }
+
+    .hero h1 span {
+      color: #ff174f;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 30px auto;
+      color: #ccc;
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 30px;
+
+      text-decoration: none;
+      font-weight: bold;
+
+      transition: .3s;
+    }
+
+    .btn-primary {
+      background: #ff174f;
+      color: white;
+      box-shadow: 0 0 25px rgba(255, 23, 79, .5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 40px rgba(255, 23, 79, .8);
+    }
+
+    .btn-secondary {
+      border: 1px solid #555;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      border-color: #ff174f;
+      color: #ff174f;
+    }
+
+    /* SEÇÕES */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 25px;
+    }
+
+    .section-title {
+      margin-bottom: 50px;
+    }
+
+    .section-title small {
+      color: #ff174f;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .section-title h2 {
+      font-size: 45px;
+      margin-top: 8px;
+    }
+
+    /* DJ */
+    .dj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .dj-image {
+      min-height: 430px;
+      border-radius: 25px;
+
+      background:
+        radial-gradient(circle at 50% 30%, #ff174f, transparent 25%),
+        linear-gradient(145deg, #2a0010, #090909);
+
+      border: 1px solid rgba(255, 23, 79, .4);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 100px;
+      box-shadow: inset 0 0 70px rgba(255, 23, 79, .15);
+    }
+
+    .dj-text h3 {
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .dj-text p {
+      color: #aaa;
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      color: #ff174f;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 30px;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 18px;
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #ff174f;
+      box-shadow: 0 10px 35px rgba(255, 23, 79, .15);
+    }
+
+    .card-icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #999;
+    }
+
+    /* MÚSICAS */
+    .music-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .music {
+      background: #111;
+      border: 1px solid #222;
+      padding: 20px;
+
+      border-radius: 15px;
+
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      transition: .3s;
+    }
+
+    .music:hover {
+      border-color: #ff174f;
+      transform: translateX(5px);
+    }
+
+    .music-number {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      background: #ff174f;
+      font-weight: bold;
+    }
+
+    .music-info {
+      flex: 1;
+    }
+
+    .music-info h3 {
+      font-size: 18px;
+    }
+
+    .music-info p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .play {
+      width: 45px;
+      height: 45px;
+      border: 1px solid #444;
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .play:hover {
+      background: #ff174f;
+      border-color: #ff174f;
+    }
+
+    /* HISTÓRIA */
+    .timeline {
+      border-left: 2px solid #ff174f;
+      padding-left: 35px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+
+      width: 12px;
+      height: 12px;
+
+      background: #ff174f;
+      border-radius: 50%;
+
+      left: -42px;
+      top: 8px;
+
+      box-shadow: 0 0 15px #ff174f;
+    }
+
+    .timeline-item h3 {
+      color: #ff174f;
+      margin-bottom: 7px;
+    }
+
+    .timeline-item p {
+      color: #999;
+    }
+
+    /* FRASE */
+    .quote {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 30px;
+
+      text-align: center;
+
+      border-radius: 25px;
+
+      background:
+        linear-gradient(135deg, rgba(255, 23, 79, .15), rgba(255, 23, 79, .02));
+
+      border: 1px solid rgba(255, 23, 79, .3);
+    }
+
+    .quote h2 {
+      font-size: clamp(30px, 5vw, 55px);
+      line-height: 1.1;
+    }
+
+    .quote p {
+      color: #888;
+      margin-top: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 50px 25px;
+      text-align: center;
+
+      background: #050505;
+      border-top: 1px solid #222;
+    }
+
+    footer .logo {
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    footer p {
+      color: #666;
+    }
+
+    .socials {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .socials a {
+      width: 45px;
+      height: 45px;
+      border: 1px solid #333;
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      color: white;
+      text-decoration: none;
+
+      transition: .3s;
+    }
+
+    .socials a:hover {
+      background: #ff174f;
+      border-color: #ff174f;
+      transform: translateY(-4px);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 800px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .dj-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .dj-image {
+        min-height: 300px;
+      }
+
+      section {
+        padding: 75px 20px;
+      }
+
+      .music {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVEGAÇÃO -->
+  <header>
+    <nav>
+      <div class="logo">FUNK.BR</div>
+
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#dj">DJ Arana</a></li>
+        <li><a href="#musicas">Músicas</a></li>
+        <li><a href="#funk">Funk</a></li>
+        <li><a href="#historia">História</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- HERO -->
+  <main id="inicio">
+
+    <div class="hero">
+      <div class="hero-content">
+
+        <span class="tag">FUNK BRASILEIRO</span>
+
+        <h1>
+          DJ <span>ARANA</span>
+        </h1>
+
+        <p>
+          Batidas fortes, graves pesados e a energia que transforma
+          o baile em uma experiência única.
+        </p>
+
+        <div class="buttons">
+          <a href="#musicas" class="btn btn-primary">
+            🎧 Explorar músicas
+          </a>
+
+          <a href="#funk" class="btn btn-secondary">
+            Conhecer o funk
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- DJ ARANA -->
+    <section id="dj">
+
+      <div class="section-title">
+        <small>ARTISTA EM DESTAQUE</small>
+        <h2>DJ Arana</h2>
+      </div>
+
+      <div class="dj-grid">
+
+        <div class="dj-image">
+          🎧
+        </div>
+
+        <div class="dj-text">
+
+          <h3>
+            O som que representa uma geração.
+          </h3>
+
+          <p>
+            O universo do funk brasileiro é formado por DJs,
+            MCs, produtores e comunidades que transformam
+            criatividade em música.
+          </p>
+
+          <p>
+            Nesta página, o destaque é para o universo musical
+            associado ao <span class="highlight">DJ Arana</span>,
+            com uma identidade visual inspirada nos bailes,
+            nos graves e na cultura urbana brasileira.
+          </p>
+
+          <a href="#musicas" class="btn btn-primary">
+            Ver playlist
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ESTILOS -->
+    <section id="funk">
+
+      <div class="section-title">
+        <small>UNIVERSO DO FUNK</small>
+        <h2>Mais que música.</h2>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-icon">🔊</div>
+          <h3>Grave</h3>
+          <p>
+            O grave é uma das marcas mais fortes da experiência
+            sonora do funk e dos sistemas de som.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🎤</div>
+          <h3>MCs</h3>
+          <p>
+            Vozes e estilos diferentes dão personalidade às
+            músicas e contam histórias através das letras.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔥</div>
+          <h3>Baile</h3>
+          <p>
+            O baile reúne música, dança, identidade e cultura
+            em uma das manifestações urbanas mais marcantes do Brasil.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MÚSICAS -->
+    <section id="musicas">
+
+      <div class="section-title">
+        <small>PLAYLIST</small>
+        <h2>Na batida.</h2>
+      </div>
+
+      <div class="music-list">
+
+        <div class="music">
+          <div class="music-number">01</div>
+
+          <div class="music-info">
+            <h3>DJ Arana — Faixa em destaque</h3>
+            <p>Funk brasileiro • DJ Arana</p>
+          </div>
+
+          <button class="play" onclick="tocar(1)">▶</button>
+        </div>
+
+
+        <div class="music">
+          <div class="music-number">02</div>
+
+          <div class="music-info">
+            <h3>Baile Funk — Set Especial</h3>
+            <p>Funk • Brasil</p>
+          </div>
+
+          <button class="play" onclick="tocar(2)">▶</button>
+        </div>
+
+
+        <div class="music">
+          <div class="music-number">03</div>
+
+          <div class="music-info">
+            <h3>Funk Brasil — Underground</h3>
+            <p>Funk • Beat pesado</p>
+          </div>
+
+          <button class="play" onclick="tocar(3)">▶</button>
+        </div>
+
+
+        <div class="music">
+          <div class="music-number">04</div>
+
+          <div class="music-info">
+            <h3>Baile — Energia Máxima</h3>
+            <p>Funk • Dance</p>
+          </div>
+
+          <button class="play" onclick="tocar(4)">▶</button>
+        </div>
+
+      </div>
+
+      <p id="player-status"
+         style="color:#777; margin-top:20px; text-align:center;">
+        Selecione uma faixa para começar.
+      </p>
+
+    </section>
+
+
+    <!-- HISTÓRIA -->
+    <section id="historia">
+
+      <div class="section-title">
+        <small>CULTURA</small>
+        <h2>A história do funk.</h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h3>Origens</h3>
+          <p>
+            O funk brasileiro possui raízes ligadas à música negra
+            e às transformações da música dançante no Brasil.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Rio de Janeiro</h3>
+          <p>
+            Os bailes cariocas tiveram papel fundamental na formação
+            da identidade do funk produzido no Brasil.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>São Paulo</h3>
+          <p>
+            A cena paulista desenvolveu diferentes batidas,
+            estilos de produção e novas formas de expressão.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Era digital</h3>
+          <p>
+            Com as plataformas digitais, DJs e MCs passaram a alcançar
+            públicos de todo o país e também do exterior.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FRASE -->
+    <section>
+
+      <div class="quote">
+
+        <h2>
+          “O grave bate.<br>
+          A pista responde.”
+        </h2>
+
+        <p>
+          Funk brasileiro • Cultura • Música • Baile
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- RODAPÉ -->
+  <footer>
+
+    <span class="logo">FUNK.BR</span>
+
+    <p>
+      Página criada para celebrar o funk brasileiro.
+    </p>
+
+    <div class="socials">
+
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="YouTube">YT</a>
+      <a href="#" aria-label="TikTok">TK</a>
+
+    </div>
+
+    <p>
+      © 2026 Funk Brasil. Projeto independente.
+    </p>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    function tocar(numero) {
+
+      const status = document.getElementById("player-status");
+
+      status.innerHTML =
+        "▶ Faixa " + numero +
+        " selecionada — adicione o link/arquivo da música no código para reproduzir.";
+
+    }
+
+    // Efeito simples na navegação ao rolar
+    window.addEventListener("scroll", function() {
+
+      const header = document.querySelector("header");
+
+      if (window.scrollY > 50) {
+        header.style.background = "rgba(0, 0, 0, 0.96)";
+      } else {
+        header.style.background = "rgba(0, 0, 0, 0.85)";
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
+```
